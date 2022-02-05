@@ -30,5 +30,5 @@ php flarum cache:clear
 ## Links
 
 - [Packagist](https://packagist.org/packages/justoverclock/users-map-location)
-- [GitHub](https://github.com/justoverclock/users-map-location)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/justoverclockl/users-map-location)
+
