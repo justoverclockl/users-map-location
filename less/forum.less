@@ -2,7 +2,28 @@ input#location {
   width: 400px;
 }
 #map { height: 180px; width: 550px; border-radius: 10px;}
-#map2 { height: 120px; width: 100%; border-radius: 10px;}
+#map2 {
+  height: 40px;
+  width: 100px;
+  border-radius: 10px;
+  transition: width 600ms, height 600ms;
+  .leaflet-control-attribution.leaflet-control {
+    display: none;
+  }
+  .leaflet-control-zoom.leaflet-bar.leaflet-control {
+    display: none;
+  }
+}
+#map2:hover{
+  height: 160px;
+  width: 100%;
+  .leaflet-control-attribution.leaflet-control {
+    display: block;
+  }
+  .leaflet-control-zoom.leaflet-bar.leaflet-control {
+    display: block;
+  }
+}
 /* required styles */
 
 li.item-mapLocation {
