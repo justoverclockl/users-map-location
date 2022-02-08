@@ -20,9 +20,10 @@ export default class AddLocationComponent extends Component {
 
   saveValue(e) {
     const user = app.session.user;
-    user.save({
-      location: e.target.value,
-    })
-      .then(app.alerts.show({type: 'success'}, app.translator.trans('justoverclock-users-map-location.forum.locationSaved')));
+    user
+      .save({
+        location: e.target.value,
+      })
+      .then(app.alerts.show({ type: 'success' }, app.translator.trans('justoverclock-users-map-location.forum.locationSaved')));
   }
 }

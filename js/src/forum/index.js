@@ -9,8 +9,8 @@ import Leaflet from 'leaflet';
 
 app.initializers.add('justoverclock/users-map-location', () => {
   User.prototype.location = Model.attribute('location');
-  extend(UserCard.prototype, 'oncreate', function () {
 
+  extend(UserCard.prototype, 'oncreate', function () {
     const user = this.attrs.user;
     let UserLocation = user.location();
     const publicToken = app.forum.attribute('justoverclock-users-map-location.mapBox-api-key');
@@ -29,7 +29,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
         let markerIcon = L.icon({
           iconUrl: markerIconPath,
           iconSize: [28, 45], // size of the icon
-        })
+        });
 
         let map2 = L.map('map2').setView([this.latitude, this.longitude], 13);
         let layerUserCard = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -41,8 +41,8 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map2);
-      })
-  })
+      });
+  });
   extend(SettingsPage.prototype, 'oncreate', function () {
     const location = app.session.user.location();
     const publicToken = app.forum.attribute('justoverclock-users-map-location.mapBox-api-key');
@@ -76,7 +76,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map);
-      })
+      });
   });
   extend(SettingsPage.prototype, 'settingsItems', function (items) {
     items.add('location', <AddLocationComponent />);
@@ -86,9 +86,6 @@ app.initializers.add('justoverclock/users-map-location', () => {
     const user = this.attrs.user;
     let UserLocation = user.location();
     if (UserLocation === '') return;
-    items.add(
-      'mapLocation',
-      <div className="map-div" id="map2" />, -100
-    )
-  })
+    items.add('mapLocation', <div className="map-div" id="map2" />, -100);
+  });
 });
