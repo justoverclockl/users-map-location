@@ -7,3 +7,4 @@ justoverclock-users-map-location:
     locationDescription: Here you can setup your location. Be sure to specify your City name only.
     location: Location
     locationSaved: Location saved successfully!
+    locationNotFound: Location not found

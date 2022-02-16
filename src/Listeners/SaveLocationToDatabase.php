@@ -17,11 +17,16 @@ class SaveLocationToDatabase
         $canEdit = $actor->can('edit', $user);
         $attributes = Arr::get($data, 'attributes', []);
 
-        if (isset($attributes['location'])) {
+        if (isset($attributes['location_countrycode'])) {
             if (!$isSelf) {
                 $actor->assertPermission($canEdit);
             }
-            $user->location = $attributes['location'];
+            $user->location_city = $attributes['location_city'];
+            $user->location_postcode = $attributes['location_postcode'];
+            $user->location_countrycode = $attributes['location_countrycode'];
+            $user->location_country = $attributes['location_country'];
+            $user->location_latitude = $attributes['location_latitude'];
+            $user->location_longitude = $attributes['location_longitude'];
         }
     }
 }

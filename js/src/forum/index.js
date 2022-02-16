@@ -8,10 +8,15 @@ import UserCard from 'flarum/forum/components/UserCard';
 import Leaflet from 'leaflet';
 
 app.initializers.add('justoverclock/users-map-location', () => {
-  User.prototype.location = Model.attribute('location');
+  User.prototype.location_country = Model.attribute('location_country');
+  User.prototype.location_countrycode = Model.attribute('location_countrycode');
+  User.prototype.location_postcode = Model.attribute('location_postcode');
+  User.prototype.location_city = Model.attribute('location_city');
+  User.prototype.location_latitude = Model.attribute('location_latitude');
+  User.prototype.location_longitude = Model.attribute('location_longitude');
 
   extend(UserCard.prototype, 'oncreate', function () {
-    const user = this.attrs.user;
+    /*const user = this.attrs.user;
     let UserLocation = user.location();
     const publicToken = app.forum.attribute('justoverclock-users-map-location.mapBox-api-key');
     const geocode = 'https://nominatim.openstreetmap.org/search?city=' + UserLocation + '&format=json';
@@ -41,10 +46,10 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map2);
-      });
+      });*/
   });
   extend(SettingsPage.prototype, 'oncreate', function () {
-    const location = app.session.user.location();
+    /*const location = app.session.user.location();
     const publicToken = app.forum.attribute('justoverclock-users-map-location.mapBox-api-key');
     const geocode = 'https://nominatim.openstreetmap.org/search?city=' + location + '&format=json';
 
@@ -76,16 +81,16 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map);
-      });
+      });*/
   });
   extend(SettingsPage.prototype, 'settingsItems', function (items) {
     items.add('location', <AddLocationComponent />);
     items.add('mapDiv', <div className="map-div" id="map" />);
   });
   extend(UserCard.prototype, 'infoItems', function (items) {
-    const user = this.attrs.user;
+    /*const user = this.attrs.user;
     let UserLocation = user.location();
     if (UserLocation === '') return;
-    items.add('mapLocation', <div className="map-div" id="map2" />, -100);
+    items.add('mapLocation', <div className="map-div" id="map2" />, -100);*/
   });
 });
