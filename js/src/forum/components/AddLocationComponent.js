@@ -59,6 +59,10 @@ export default class AddLocationComponent extends Component {
     }
   }
   
+  oncreate(vnode) {
+    this.onupdate(vnode);
+  }
+  
   onupdate(vnode) {
     let dom = vnode.dom;
     let mapElements = dom.getElementsByClassName('location-map');
