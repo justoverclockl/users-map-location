@@ -62,3 +62,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
     items.add('location', <AddLocationComponent />);
   });
 });
+
+export {
+  AddLocationComponent
+}
