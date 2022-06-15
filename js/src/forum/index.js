@@ -18,9 +18,16 @@ app.initializers.add('justoverclock/users-map-location', () => {
 
     if (UserLocation === '') return;
 
-    let GetCoordinates = fetch(geocode)
-      .then((response) => response.json())
-      .then((coordinates) => {
+    const getLatAndLon = async () => {
+      try {
+        const data = await fetch(geocode)
+        return await data.json()
+      } catch (error) {
+        throw error
+      }
+    }
+
+    getLatAndLon().then((coordinates) => {
         this.latitude = coordinates[0].lat;
         this.longitude = coordinates[0].lon;
 
@@ -36,6 +43,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>, Developed by <a href="https://flarum.it/">Marco Colia</a>',
           maxZoom: 18,
+          edgeBufferTiles: 1,
           id: 'mapbox/streets-v11',
           tileSize: 512,
           zoomOffset: -1,
@@ -50,9 +58,16 @@ app.initializers.add('justoverclock/users-map-location', () => {
 
     if (location === '') return;
 
-    let GetCoordinates = fetch(geocode)
-      .then((response) => response.json())
-      .then((coordinates) => {
+    const getLatAndLon = async () => {
+      try {
+        const data = await fetch(geocode)
+        return await data.json()
+      } catch (error) {
+        throw error
+      }
+    }
+
+    getLatAndLon().then((coordinates) => {
         this.latitude = coordinates[0].lat;
         this.longitude = coordinates[0].lon;
 
@@ -71,11 +86,13 @@ app.initializers.add('justoverclock/users-map-location', () => {
             'contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>, ' +
             'Developed by <a href="https://flarum.it/">Marco Colia</a>',
           maxZoom: 18,
+          edgeBufferTiles: 1,
           id: 'mapbox/streets-v11',
           tileSize: 512,
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map);
+        map.invalidateSize()
       });
   });
   extend(SettingsPage.prototype, 'settingsItems', function (items) {
