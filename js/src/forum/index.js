@@ -59,7 +59,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
         }).addTo(map2);
         setTimeout(() => {
           map2.invalidateSize()
-        },800)
+        },1000)
 
       });
   });
@@ -104,8 +104,11 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map);
+      setTimeout(() => {
         map.invalidateSize()
+      },1000)
       });
+    m.redraw()
   });
   extend(SettingsPage.prototype, 'settingsItems', function (items) {
     items.add('location', <AddLocationComponent />);
