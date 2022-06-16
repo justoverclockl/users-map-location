@@ -11,6 +11,13 @@ app.initializers.add('justoverclock/users-map-location', () => {
   User.prototype.location = Model.attribute('location');
 
   extend(UserCard.prototype, 'oncreate', function () {
+
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = app.forum.attribute('baseUrl') + '/assets/extensions/justoverclock-users-map-location/leaflet.edgebuffer.js'
+
+    document.head.appendChild(script);
+
     const user = this.attrs.user;
     let UserLocation = user.location();
     const publicToken = app.forum.attribute('justoverclock-users-map-location.mapBox-api-key');
