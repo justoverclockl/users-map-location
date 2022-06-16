@@ -46,6 +46,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
         });
 
         let map2 = L.map('map2').setView([this.latitude, this.longitude], 13);
+        let marker = L.marker([this.latitude, this.longitude], { icon: markerIcon }).addTo(map2)/*.bindPopup('A pretty CSS3 popup.<br> Easily customizable.').openPopup();*/
         let layerUserCard = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>, Developed by <a href="https://flarum.it/">Marco Colia</a>',
@@ -56,6 +57,10 @@ app.initializers.add('justoverclock/users-map-location', () => {
           zoomOffset: -1,
           accessToken: publicToken,
         }).addTo(map2);
+        setTimeout(() => {
+          map2.invalidateSize()
+        },800)
+
       });
   });
   extend(SettingsPage.prototype, 'oncreate', function () {
@@ -86,7 +91,7 @@ app.initializers.add('justoverclock/users-map-location', () => {
         });
 
         let map = L.map('map').setView([this.latitude, this.longitude], 13);
-        let marker = L.marker([this.latitude, this.longitude], { icon: markerIcon }).addTo(map);
+        let marker = L.marker([this.latitude, this.longitude], { icon: markerIcon }).addTo(map)
         let layer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
           attribution:
             'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
