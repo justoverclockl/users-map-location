@@ -28,7 +28,7 @@
     "extra": {
         "flarum-extension": {
             "title": "User Map Location",
-            "category": "features",
+            "category": "feature",
             "icon": {
                 "name": "fas fa-map-marked-alt",
                 "backgroundColor": "purple",
